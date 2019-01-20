@@ -177,8 +177,10 @@ public class HomeActivity extends AppCompatActivity
         }
         else if (id == R.id.nav_settings)
         {
-
-        } else if (id == R.id.nav_logout)
+           Intent intent = new Intent(HomeActivity.this,SettingsActivity.class);
+           startActivity(intent);
+        }
+        else if (id == R.id.nav_logout)
         {
           Paper.book().destroy();
             Intent intent = new Intent(HomeActivity.this,MainActivity.class);
