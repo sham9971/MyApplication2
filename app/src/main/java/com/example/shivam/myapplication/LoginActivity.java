@@ -23,13 +23,15 @@ import com.google.firebase.database.ValueEventListener;
 
 import io.paperdb.Paper;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity
+{
+
     private EditText InputPhoneNumber, InputPassword;
     private Button LoginButton;
     private ProgressDialog loadingBar;
     private TextView AdminLink, NotAdminLink;
     private String parentDbName = "Users";
-    private CheckBox checkboxRememberMe;
+    private com.rey.material.widget.CheckBox checkboxRememberMe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +44,8 @@ public class LoginActivity extends AppCompatActivity {
         NotAdminLink = (TextView) findViewById(R.id.not_admin_panel_link);
         loadingBar = new ProgressDialog(this);
 
-        loadingBar = new ProgressDialog(this);
-        checkboxRememberMe = (CheckBox) findViewById(R.id.remember_me_chkb);
+        checkboxRememberMe = (com.rey.material.widget.CheckBox) findViewById(R.id.remember_me_chkb);
+
         Paper.init(this);
 
         LoginButton.setOnClickListener(new View.OnClickListener() {
@@ -74,55 +76,78 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    private void LoginUser() {
+    private void LoginUser()
+    {
+
         String phone = InputPhoneNumber.getText().toString();
-        final String password = InputPassword.getText().toString();
-        if (TextUtils.isEmpty(phone)) {
+        String password = InputPassword.getText().toString();
+
+        if (TextUtils.isEmpty(phone))
+        {
             Toast.makeText(this, "Please enter your phone number", Toast.LENGTH_SHORT).show();
-        } else if (TextUtils.isEmpty(password)) {
+        }
+        else if (TextUtils.isEmpty(password))
+        {
             Toast.makeText(this, "Please enter your password", Toast.LENGTH_SHORT).show();
-        } else {
+        }
+        else
+            {
+
             loadingBar.setTitle("Create Account");
             loadingBar.setMessage("please Wait while we are checking ..");
             loadingBar.setCanceledOnTouchOutside(false);
             loadingBar.show();
+
             AllowAccessToAccount(phone, password);
+
         }
     }
 
-    private void AllowAccessToAccount(final String phone, final String password) {
-        if (checkboxRememberMe.isChecked()) {
+    private void AllowAccessToAccount(final String phone, final String password)
+    {
+        if (checkboxRememberMe.isChecked())
+        {
             Paper.book().write(Prevalent.UserPhoneKey, phone);
             Paper.book().write(Prevalent.UserPasswordKey, password);
         }
+
         final DatabaseReference RootRef;
         RootRef = FirebaseDatabase.getInstance().getReference();
 
         RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.child(parentDbName).child(phone).exists()) {
+                if (dataSnapshot.child(parentDbName).child(phone).exists())
+                {
                     Users usersData = dataSnapshot.child(parentDbName).child(phone).getValue(Users.class);
-                    if (usersData.getPhone().equals(phone)) {
-                        if (usersData.getPassword().equals(password)) {
-                            if (parentDbName.equals("Admins")) {
+                    if (usersData.getPhone().equals(phone))
+                    {
+                        if (usersData.getPassword().equals(password))
+                        {
+                            if (parentDbName.equals("Admins"))
+                            {
                                 Toast.makeText(LoginActivity.this, "Welcome Admin You are logged in Successfully", Toast.LENGTH_SHORT).show();
                                 loadingBar.dismiss();
                                 Intent intent = new Intent(LoginActivity.this, AdminCategoryActivity.class);
                                 startActivity(intent);
-                            } else if (parentDbName.equals("Users")) {
+                            }
+                            else if (parentDbName.equals("Users"))
+                            {
                                 Toast.makeText(LoginActivity.this, "Logged in Successful", Toast.LENGTH_SHORT).show();
                                 loadingBar.dismiss();
                                 Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                                 Prevalent.currentonlineUsers = usersData;
                                 startActivity(intent);
                             }
-                        } else {
+                        }
+                        else
+                            {
                             loadingBar.dismiss();
                             Toast.makeText(LoginActivity.this, "Password is incorrect", Toast.LENGTH_SHORT).show();
                         }
                     }
-                } else {
+                }
+                else {
                     Toast.makeText(LoginActivity.this, "Accouunt with this " + phone + " do not exist", Toast.LENGTH_SHORT).show();
                     loadingBar.dismiss();
                     Toast.makeText(LoginActivity.this, "You Need To create an account", Toast.LENGTH_SHORT).show();
