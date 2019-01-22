@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "562823626487",
+    "firebase_url": "https://amasam-ecomm.firebaseio.com",
+    "project_id": "amasam-ecomm",
+    "storage_bucket": "amasam-ecomm.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:562823626487:android:8f914f80bb83fa81",
+        "android_client_info": {
+          "package_name": "com.example.shivam.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "562823626487-3e7v87qjfpg1m1af5s6cpgd9h9gt6iec.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.shivam.myapplication",
+            "certificate_hash": "013dced5aa3422a8d810f8a7f3af6f1c0fed326b"
+          }
+        },
+        {
+          "client_id": "562823626487-e3otgbd31aiktol35meaumqcmoc68rn8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB1bxRBy6191kEwu0x3dXHyLtn-0teCjHU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "562823626487-e3otgbd31aiktol35meaumqcmoc68rn8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
