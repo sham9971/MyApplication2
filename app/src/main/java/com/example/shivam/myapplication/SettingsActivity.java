@@ -117,7 +117,7 @@ public class SettingsActivity extends AppCompatActivity
         userMap.put("password",passwordEditText.getText().toString());
         ref.child(Prevalent.currentonlineUsers.getPhone()).updateChildren(userMap);
 
-        startActivity(new Intent(SettingsActivity.this,MainActivity.class));
+        startActivity(new Intent(SettingsActivity.this,HomeActivity.class));
         Toast.makeText(SettingsActivity.this, "Profile Info updated Successfully", Toast.LENGTH_SHORT).show();
         finish();
 
@@ -222,7 +222,7 @@ public class SettingsActivity extends AppCompatActivity
                         ref.child(Prevalent.currentonlineUsers.getPhone()).updateChildren(userMap);
 
                         progressDialog.dismiss();
-                        startActivity(new Intent(SettingsActivity.this,MainActivity.class));
+                        startActivity(new Intent(SettingsActivity.this,HomeActivity.class));
                         Toast.makeText(SettingsActivity.this, "Profile Info updated Successfully", Toast.LENGTH_SHORT).show();
                         finish();
                     }
