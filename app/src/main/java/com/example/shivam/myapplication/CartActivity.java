@@ -194,7 +194,6 @@ public class CartActivity extends AppCompatActivity
 
                         txtMsg1.setVisibility(View.VISIBLE);
                         nextProcessBtn.setVisibility(recyclerView.GONE);
-
                         Toast.makeText(CartActivity.this, "you can purchase more products,once you received your previous order", Toast.LENGTH_SHORT).show();
 
 

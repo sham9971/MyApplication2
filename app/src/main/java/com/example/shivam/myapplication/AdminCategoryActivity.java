@@ -6,6 +6,7 @@ import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
 public class AdminCategoryActivity extends AppCompatActivity {
@@ -13,11 +14,39 @@ public class AdminCategoryActivity extends AppCompatActivity {
     private ImageView glasses,hatsCaps,walletBagsPurses,shoes;
     private ImageView headPhonesHandFree,laptops,watches,mobilePhones;
 
+    private Button LogOutBtn,CheckOrderBtn ;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_category);
+
+        LogOutBtn = (Button) findViewById(R.id.admin_logout_btn);
+        CheckOrderBtn = (Button) findViewById(R.id.check_orders_btn);
+
+        LogOutBtn.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Intent intent = new Intent(AdminCategoryActivity.this,AdminNewOrdersActivity.class);
+                startActivity(intent);
+
+            }
+        });
+        CheckOrderBtn.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Intent intent = new Intent(AdminCategoryActivity.this,MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                finish();
+            }
+        });
+
         tShirts=(ImageView) findViewById(R.id.t_shirts);
         sportsTShirts=(ImageView) findViewById(R.id.sports_t_shirts);
         femaleDresses=(ImageView) findViewById(R.id.female_dresses);
@@ -30,6 +59,8 @@ public class AdminCategoryActivity extends AppCompatActivity {
         laptops=(ImageView) findViewById(R.id.laptops);
         watches=(ImageView) findViewById(R.id.watches);
        mobilePhones=(ImageView) findViewById(R.id.mobilephones);
+
+
 
 
 

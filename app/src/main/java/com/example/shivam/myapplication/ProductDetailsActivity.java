@@ -67,7 +67,7 @@ public class ProductDetailsActivity extends AppCompatActivity
 
                   else
                   {
-                      addingToCartList();   
+                      addingToCartList();
                   }
             }
         });
